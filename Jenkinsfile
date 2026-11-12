@@ -22,6 +22,7 @@ pipeline {
                 sh 'npm ci'
                 sh 'npm run build'
                 sh 'ls -la'
+
             }
         }
 
@@ -60,6 +61,9 @@ pipeline {
                     npm install netlify-cli
                     ./node_modules/.bin/netlify --version
                     echo "deploying to production, site id: $NETLIFY_SITE_ID"
+                    node_modules/. bin/netlify status
+                    node_modules/ .bin/netlify deploy --dir=build
+
                 '''
             }
         }
